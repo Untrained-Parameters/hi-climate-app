@@ -1,0 +1,5 @@
+*.crt
+*.json
+*.key
+*.pem
+*.uuid
