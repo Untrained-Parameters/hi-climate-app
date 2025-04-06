@@ -1,0 +1,6 @@
+[submodule "weather-data-analysis-dashboard"]
+	path = weather-data-analysis-dashboard
+	url = https://github.com/Untrained-Parameters/weather-data-analysis-dashboard
+[submodule "hi-climate-backend"]
+	path = hi-climate-backend
+	url = https://github.com/Untrained-Parameters/hi-climate-backend
