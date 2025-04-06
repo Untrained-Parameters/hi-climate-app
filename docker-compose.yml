@@ -1,0 +1,41 @@
+services:
+  frontend:
+    image: frontend
+    build:
+      context: ./weather-data-analysis-dashboard
+      dockerfile: Dockerfile
+    networks:
+      - priv_net
+
+  backend:
+    image: backend
+    build:
+      context: ./hi-climate-backend
+      dockerfile: Dockerfile
+    networks:
+      - priv_net
+
+  caddy:
+    image: caddy:alpine
+    restart: always
+    ports:
+      - 80:80/tcp 
+      - 443:443/tcp 
+    volumes:
+      - ./caddy/data/:/data/
+      - ./caddy/config/:/config/
+      - ./caddy/certs:/certs/
+      - ./caddy/etc:/etc/caddy/
+    networks:
+      - priv_net
+
+networks:
+  priv_net:
+    name: priv_net
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.110.0/24
+          ip_range: 192.168.110.0/24
+          gateway: 192.168.110.1
